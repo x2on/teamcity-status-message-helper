@@ -30,6 +30,22 @@ signing {
     sign configurations.archives
 }
 
+task sourceJar(type: Jar) {
+    description = 'An archive of the source code for Maven Central'
+    classifier = 'sources'
+    from sourceSets.main.java
+}
+
+task javadocJar(type: Jar) {
+    description = 'An archive of the JavaDoc for Maven Central'
+    classifier = 'javadoc'
+    from javadoc
+}
+
+artifacts {
+    archives javadocJar, sourceJar
+}
+
 // Only *require* signing if we are uploading a non snapshot version
 gradle.taskGraph.whenReady { taskGraph ->
     tasks.withType(org.gradle.plugins.signing.Sign).all {
