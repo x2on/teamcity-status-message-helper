@@ -50,6 +50,13 @@ public class TeamCityStatusMessageHelper {
         return "##teamcity[buildStatus status='" + type.toString() + "' text='" + TeamCityStatusMessageHelper.escapeString(text) + "']";
     }
 
+    public static String buildMessageString(TeamCityStatusType type, String text, String errorDetails) {
+        if (type == TeamCityStatusType.ERROR) {
+            return "##teamcity[message text='" + TeamCityStatusMessageHelper.escapeString(text) + "' errorDetails='" + TeamCityStatusMessageHelper.escapeString(errorDetails) + "' status='" + type.toString() + "']";
+        }
+        return "##teamcity[message status='" + type.toString() + "' text='" + TeamCityStatusMessageHelper.escapeString(text) + "']";
+    }
+
     public static String importDataString(TeamCityImportDataType type, String path) {
         return "##teamcity[importData type='" + type.toString() + "' path='" + path + "']";
     }
