@@ -25,4 +25,10 @@ public class TeamCityStatusMessageHelperTest {
         assertEquals("##teamcity[buildStatus status='FAILURE' text='Tests failed - The app may be crashed']", buildStatusFailureLog);
     }
 
+    @Test
+    public void testShouldCreateImportDataLog() {
+        String importDataLog = TeamCityStatusMessageHelper.importDataString(TeamCityImportDataType.JUNIT, "/example/junit.xml");
+        assertEquals("##teamcity[importData type='junit' path='/example/junit.xml']", importDataLog);
+    }
+
 }
