@@ -46,7 +46,7 @@ public class TeamCityStatusMessageHelper {
         return "##teamcity[buildNumber '" + TeamCityStatusMessageHelper.escapeString(version) + "']";
     }
 
-    public static String buildStatusFailureString(TeamCityStatusType type, String text) {
+    public static String buildStatusString(TeamCityStatusType type, String text) {
         return "##teamcity[buildStatus status='" + type.toString() + "' text='" + TeamCityStatusMessageHelper.escapeString(text) + "']";
     }
 

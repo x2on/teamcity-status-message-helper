@@ -21,7 +21,7 @@ public class TeamCityStatusMessageHelperTest {
 
     @Test
     public void testShouldCreateBuildStatusFailureLog() {
-        String buildStatusFailureLog = TeamCityStatusMessageHelper.buildStatusFailureString(TeamCityStatusType.FAILURE, "Tests failed - The app may be crashed");
+        String buildStatusFailureLog = TeamCityStatusMessageHelper.buildStatusString(TeamCityStatusType.FAILURE, "Tests failed - The app may be crashed");
         assertEquals("##teamcity[buildStatus status='FAILURE' text='Tests failed - The app may be crashed']", buildStatusFailureLog);
     }
 
