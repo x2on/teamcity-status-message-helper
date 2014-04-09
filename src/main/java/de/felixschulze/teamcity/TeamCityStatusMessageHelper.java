@@ -50,6 +50,10 @@ public class TeamCityStatusMessageHelper {
         return "##teamcity[buildStatus status='" + type.toString() + "' text='" + TeamCityStatusMessageHelper.escapeString(text) + "']";
     }
 
+    public static String buildStatusFailureString(TeamCityStatusType type, String text) {
+        return TeamCityStatusMessageHelper.buildStatusString(type, text);
+    }
+
     public static String buildMessageString(TeamCityStatusType type, String text, String errorDetails) {
         if (type == TeamCityStatusType.ERROR) {
             return "##teamcity[message text='" + TeamCityStatusMessageHelper.escapeString(text) + "' errorDetails='" + TeamCityStatusMessageHelper.escapeString(errorDetails) + "' status='" + type.toString() + "']";
