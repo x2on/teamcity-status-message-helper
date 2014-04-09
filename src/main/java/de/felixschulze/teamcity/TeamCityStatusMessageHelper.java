@@ -57,7 +57,19 @@ public class TeamCityStatusMessageHelper {
         return "##teamcity[message status='" + type.toString() + "' text='" + TeamCityStatusMessageHelper.escapeString(text) + "']";
     }
 
+    public static String buildProgressString(TeamCityProgressType type, String text) {
+        if (type == TeamCityProgressType.START) {
+            return "##teamcity[progressStart '" + TeamCityStatusMessageHelper.escapeString(text) + "']";
+        } else if (type == TeamCityProgressType.FINISH) {
+            return "##teamcity[progressFinish '" + TeamCityStatusMessageHelper.escapeString(text) + "']";
+        } else if (type == TeamCityProgressType.MESSAGE) {
+            return "##teamcity[progressMessage '" + TeamCityStatusMessageHelper.escapeString(text) + "']";
+        }
+        return "";
+    }
+
     public static String importDataString(TeamCityImportDataType type, String path) {
         return "##teamcity[importData type='" + type.toString() + "' path='" + path + "']";
     }
+
 }

@@ -43,4 +43,23 @@ public class TeamCityStatusMessageHelperTest {
         assertEquals("##teamcity[importData type='junit' path='/example/junit.xml']", importDataLog);
     }
 
+    @Test
+    public void testShouldCreateBuildProgressStartMessage() {
+        String buildProgressMessage = TeamCityStatusMessageHelper.buildProgressString(TeamCityProgressType.START, "Some start message");
+        assertEquals("##teamcity[progressStart 'Some start message']", buildProgressMessage);
+    }
+
+    @Test
+    public void testShouldCreateBuildProgressFinishMessage() {
+        String buildProgressMessage = TeamCityStatusMessageHelper.buildProgressString(TeamCityProgressType.FINISH, "Some finish message");
+        assertEquals("##teamcity[progressFinish 'Some finish message']", buildProgressMessage);
+    }
+
+    @Test
+    public void testShouldCreateBuildProgressMessage() {
+        String buildProgressMessage = TeamCityStatusMessageHelper.buildProgressString(TeamCityProgressType.MESSAGE, "Some message");
+        assertEquals("##teamcity[progressMessage 'Some message']", buildProgressMessage);
+    }
+
+
 }
