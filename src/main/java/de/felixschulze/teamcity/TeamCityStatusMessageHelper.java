@@ -50,7 +50,10 @@ public class TeamCityStatusMessageHelper {
         return "##teamcity[buildStatus status='" + type.toString() + "' text='" + TeamCityStatusMessageHelper.escapeString(text) + "']";
     }
 
-    public static String buildStatusFailureString(TeamCityStatusType type, String text) {
+    /**
+     * @deprecated  As of release 1.0, replaced by {@link #buildStatusString(TeamCityStatusType type, String text)}
+     */
+    @Deprecated public static String buildStatusFailureString(TeamCityStatusType type, String text) {
         return TeamCityStatusMessageHelper.buildStatusString(type, text);
     }
 
