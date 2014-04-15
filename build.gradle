@@ -18,6 +18,9 @@ group = 'de.felixschulze.teamcity'
 ext.archivesBaseName = 'teamcity-status-message-helper'
 ext.isSnapshot = version.endsWith("-SNAPSHOT")
 
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
 repositories {
     mavenCentral()
 }
