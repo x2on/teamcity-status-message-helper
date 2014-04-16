@@ -29,6 +29,16 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
+tasks.withType(Compile) {
+  options.bootClasspath =
+    ['/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar', // Mac OS X
+     '/usr/lib/jvm/java-6-openjdk/jre/lib/rt.jar'  // Travis CI
+    ].find {
+      def rt_jar = new File(it)
+      rt_jar.exists() && rt_jar.canRead()
+    }
+}
+
 signing {
     sign configurations.archives
 }
