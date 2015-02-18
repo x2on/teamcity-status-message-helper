@@ -79,4 +79,27 @@ public class TeamCityStatusMessageHelper {
         return "##teamcity[importData type='" + type.toString() + "' path='" + path + "']";
     }
 
+    public static String testSuiteStarted(String name) {
+        return "##teamcity[testSuiteStarted name='" + TeamCityStatusMessageHelper.escapeString(name) + "']";
+    }
+
+    public static String testSuiteFinished(String name) {
+        return "##teamcity[testSuiteFinished name='" + TeamCityStatusMessageHelper.escapeString(name) + "']";
+    }
+
+    public static String testStarted(String name) {
+        return "##teamcity[testStarted name='" + TeamCityStatusMessageHelper.escapeString(name) + "']";
+    }
+
+    public static String testFailed(String name, String message, String details) {
+        return "##teamcity[testFailed name='" + TeamCityStatusMessageHelper.escapeString(name) + "' message='" + TeamCityStatusMessageHelper.escapeString(message) + "' details='" + TeamCityStatusMessageHelper.escapeString(details) + "']";
+    }
+
+    public static String testIgnored(String name, String message) {
+        return "##teamcity[testIgnored name='" + TeamCityStatusMessageHelper.escapeString(name) + "' message='" + TeamCityStatusMessageHelper.escapeString(message) + "']";
+    }
+
+    public static String testFinished(String name, long duration) {
+        return "##teamcity[testFinished name='" + TeamCityStatusMessageHelper.escapeString(name) + "' duration='" + duration + "']";
+    }
 }
