@@ -67,5 +67,23 @@ public class TeamCityStatusMessageHelperTest {
         assertEquals("##teamcity[progressMessage 'Some message']", buildProgressMessage);
     }
 
+    @Test
+    public void testShouldCreateBuildProgressStartMessageWithFlowId() {
+        String buildProgressMessage = TeamCityStatusMessageHelper.buildProgressString(TeamCityProgressType.START, "Some start message", "Some flow ID");
+        assertEquals("##teamcity[progressStart 'Some start message' flowId='Some flow ID']", buildProgressMessage);
+    }
+
+    @Test
+    public void testShouldCreateBuildProgressFinishMessageWithFlowId() {
+        String buildProgressMessage = TeamCityStatusMessageHelper.buildProgressString(TeamCityProgressType.FINISH, "Some finish message", "Some flow ID");
+        assertEquals("##teamcity[progressFinish 'Some finish message' flowId='Some flow ID']", buildProgressMessage);
+    }
+
+    @Test
+    public void testShouldCreateBuildProgressMessageWithFlowId() {
+        String buildProgressMessage = TeamCityStatusMessageHelper.buildProgressString(TeamCityProgressType.MESSAGE, "Some message", "Some flow ID");
+        assertEquals("##teamcity[progressMessage 'Some message' flowId='Some flow ID']", buildProgressMessage);
+    }
+
 
 }

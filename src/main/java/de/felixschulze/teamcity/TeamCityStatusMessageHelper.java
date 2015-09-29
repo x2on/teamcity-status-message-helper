@@ -75,6 +75,16 @@ public class TeamCityStatusMessageHelper {
         return "";
     }
 
+    public static String buildProgressString(TeamCityProgressType type, String text, String flowId) {
+        if (type == TeamCityProgressType.START) {
+            return "##teamcity[progressStart '" + TeamCityStatusMessageHelper.escapeString(text) + "' flowId='" + TeamCityStatusMessageHelper.escapeString(flowId) + "']";
+        } else if (type == TeamCityProgressType.FINISH) {
+            return "##teamcity[progressFinish '" + TeamCityStatusMessageHelper.escapeString(text) + "' flowId='" + TeamCityStatusMessageHelper.escapeString(flowId) + "']";
+        } else if (type == TeamCityProgressType.MESSAGE) {
+            return "##teamcity[progressMessage '" + TeamCityStatusMessageHelper.escapeString(text) + "' flowId='" + TeamCityStatusMessageHelper.escapeString(flowId) + "']";
+        }
+        return "";    }
+
     public static String importDataString(TeamCityImportDataType type, String path) {
         return "##teamcity[importData type='" + type.toString() + "' path='" + path + "']";
     }
